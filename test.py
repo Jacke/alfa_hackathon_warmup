@@ -57,9 +57,11 @@ def regression(DataFrame, assets, back, forward):
 		print("error will be here: >>>>>>")
 		print(window[ass])
 		print(range(0, len(window[ass])))
-
-		temp = sm.regression.linear_model.OLS(window[ass], range(0, 
-		 len(window[ass])))
+		
+		Y = [1,3,4,5,2,3,4]
+		temp = sm.OLS(Y, range(1,8) )
+		print("temp")
+		print(temp)
 
 		reg = temp.fit()
 		regr[ass] = (reg.params)
@@ -230,10 +232,21 @@ def main():
 	return X, best, assets, EU, regr, profit
 
 if __name__ == "__main__":
-   #main()
+    main()
+    print(" ")
+    print(" ")
+    print(" ")
+    print(" ")
+    #
     Y = [1,3,4,5,2,3,4]
     X = range(1,8)
     X = sm.add_constant(X)
-    print(X)
+    model = sm.OLS(Y,X)
+    results = model.fit()
+    results.params
+    results.tvalues
+    print(results.t_test([1, 0]))
+    print(results.f_test(np.identity(2)))
+    print(model)
 
 
