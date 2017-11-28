@@ -225,7 +225,8 @@ def main():
 			print('Sum of weights does not equal 1')
 
 
-
+    print("Best:")
+    print(best[0,:])
 	maxP = max(best[0,:]) 
 	print( "The maximum profit to be made is: %f") % maxP
 	# find the column where the sum is equal to the max
